@@ -1,0 +1,16 @@
+.Widget {
+    color: black;
+    height: 30px;
+    width: 30px;
+    margin-right: 2%;
+}
+
+.Bienvenida {
+    color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    font-size: calc(10px + 2vmin);
+}
