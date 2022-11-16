@@ -14,7 +14,7 @@ export default function NavbarBootstrap() {
             <Nav.Link href="#animales">Animales</Nav.Link>
           </Nav>
         </Container>
-        <CartWidget />
+        <CartWidget/>
       </Navbar>
       );
 }
