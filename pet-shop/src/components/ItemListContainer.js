@@ -1,37 +1,30 @@
-import { useState } from 'react';
-
 import ItemList from './ItemList';
-
-const productos = [
-    {
-      id: "1",
-      name: "Gato",
-      descripcion: "El gato tiene 4 patas",
-      stock:5,
-      img: "https://placekitten.com/200/300",
-      price: 5000
-    },
-    {
-      id: "2",
-      name: "Perro",
-      descripcion: "El perro tiene cola",
-      stock:5,
-      img:"https://place.dog/300/200",
-      price: 4500
-    }
-  ]
+import { productos } from "../mocks/mocks.js";
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 function ItemListContainer () {
     const [products,setProducts] = useState([])
-    const productList = new Promise((resolve) => 
-    setTimeout(() =>{resolve(productos)},2000))
-
-
-
-    productList.then((data) => setProducts(data))
+    const {category} = useParams();
+    useEffect(() => {
+      new Promise((resolve) =>
+        setTimeout(() => {
+          resolve(productos);
+        }, 2000)
+      ).then((data) => {
+        if (category) {
+          const categories = data.filter(
+            (product) => product.category === category
+          );
+          setProducts(categories);
+        } else {
+          setProducts(data);
+        }
+      });
+    }, [category]);
     
     return (
-        <div>
+        <div className='ItemListContainer'>
             <ItemList productList={products}/>
         </div>
     )
