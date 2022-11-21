@@ -1,14 +1,14 @@
 import Item from "./Item"
 
-function ItemList (productList){
+const ItemList = ({ productList }) => {
     return (
-        <ul className="itemList">
-            {productList.map((product) => (
-                <Item product = {product}/>
-            ))}
-        </ul>
+      <ul>
+        {productList.map((product) => (
+          <Item product={product} />
+        ))}
+      </ul>
     );
-};
+  };
 
 
 export default ItemList

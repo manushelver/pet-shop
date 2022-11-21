@@ -8,7 +8,7 @@ export const CategoryView = () => {
 
     return (
         <Layout>
-            <ItemListContainer></ItemListContainer>
+            <ItemListContainer/>
         </Layout>
     )
 }

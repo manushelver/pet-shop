@@ -1,10 +1,11 @@
-function Item(product) {
+const Item = ({ product }) => {
     return (
-    <div>
-        <img src={product.img} alt=""/>
+      <div>
+        <img src={product.img} className="Item" alt="Producto" />
         <li>{product.name}</li>
-    </div>
-    )
-}
+        <li>{product.descripcion}</li>
+      </div>
+    );
+  };
 
 export default Item

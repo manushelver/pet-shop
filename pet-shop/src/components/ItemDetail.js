@@ -1,12 +1,11 @@
-function ItemDetail (product) {
+const ItemDetail = ({ product }) => {
     return (
-        <div>
-            <img src={product.img} alt=""/>
-            <li>{product.name}</li>
-            <li>{product.descripcion}</li>
-            <li>{product.price}</li>
-        </div>
-        )
-}
+      <div>
+        <div>{product.name}</div>
+        <img src={product.img} alt="Detalle" />
+      </div>
+    );
+  };
+  
 
 export default ItemDetail
