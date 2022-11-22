@@ -7,19 +7,23 @@ import { useParams } from "react-router-dom";
 function ItemDetailContainer() {
     const [item,setItem] = useState(null)
     const {id} = useParams();
-    useEffect(() => {new Promise((resolve) => setTimeout(() =>resolve(productos[0]),2000))
+    useEffect(() => {new Promise((resolve) => setTimeout(() =>resolve(productos),2000))
         .then((data) => {
-            const aMostrar = data.filter(
-                (product) => product.id === id
+            const aMostrar = data.find(
+                product => product.id === id
             );
             console.log(aMostrar)
             setItem(aMostrar);
         }
         )
     },[id]);
-    console.log(item)
+    if (!item) {
+        return <p>Loading...</p>;
+      }
     return (
-        <ItemDetail product = {item}/>
+        <div className="container d-flex justify-content-center h-auto">
+            <ItemDetail product = {item}/>
+        </div>
     )
 
 }

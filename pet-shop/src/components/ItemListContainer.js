@@ -22,9 +22,13 @@ function ItemListContainer () {
         }
       });
     }, [category]);
+
+    if (!products) {
+      return <p>Loading...</p>;
+    }
     
     return (
-        <div className='container'>
+        <div className="container d-flex w-500">
             <ItemList productList={products}/>
         </div>
     )

@@ -1,6 +1,6 @@
 export const productos = [
     {
-      id: 1,
+      id: "1",
       name: "Gato",
       descripcion: "El gato tiene 4 patas",
       stock:5,
@@ -9,7 +9,7 @@ export const productos = [
       price: 5000,
     },
     {
-      id: 2,
+      id: "2",
       name: "Perro",
       descripcion: "El perro tiene cola",
       category: "Perro",
