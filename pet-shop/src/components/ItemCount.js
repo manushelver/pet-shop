@@ -1,23 +1,12 @@
-import React, { useState} from 'react';
+import React from 'react';
 
-const ItemCount = (product) => {
-  const [count, setCount] = useState(0);
-const stock = product.stock;
-  const decrease = () => {
-    setCount(count-1);
-  }
-
-  const increase = () => {
-    setCount(count+1);
-  }
-
+const ItemCount = ({count, handleCount}) => {
   return (
     <div>
       <div className='contador'>
-        <button>Agregar al carrito</button>
-        <button disabled={count <=1} onClick={decrease}> - </button>
+        <button onClick={handleCount("-")}> - </button>
         <span>{count} </span>
-        <button disabled={count >=stock} onClick={increase}> + </button>
+        <button onClick={handleCount("+")}> + </button>
       </div>
     </div>
   );

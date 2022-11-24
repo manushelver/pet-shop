@@ -16,5 +16,32 @@ export const productos = [
       stock:5,
       img:"https://place.dog/300/200",
       price: 4500,
+    },
+    {
+      id: "3",
+      name: "Perro",
+      descripcion: "El perro tiene cola",
+      category: "Perro",
+      stock:5,
+      img:"https://place.dog/300/200",
+      price: 4500,
+    },
+    {
+      id: "4",
+      name: "Perro 2",
+      descripcion: "Los perros son caninos",
+      category: "Perro",
+      stock:10,
+      img:"https://place.dog/300/200",
+      price: 2000,
+    },
+    {
+      id: "5",
+      name: "Gato",
+      descripcion: "Los gatos son felinos",
+      stock:8,
+      category: "Gato",
+      img: "https://placekitten.com/200/300",
+      price: 6000,
     }
   ];

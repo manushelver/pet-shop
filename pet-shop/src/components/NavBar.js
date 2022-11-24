@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 
 export default function NavbarBootstrap() {
   return (
-      <Navbar bg="light" variant="light">
+      <Navbar bg="info" variant="light">
         <Container>
-          <Navbar.Brand href="/">Mascoterias</Navbar.Brand>
+          <Navbar.Brand to="/">Mascoterias</Navbar.Brand>
           <Nav className="me-auto">
             <Link className="bg-gray-900 text-black px-3 py-2 rounded-md text-sm font-medium" to="/">Home</Link>
             <Link className="bg-gray-900 text-black px-3 py-2 rounded-md text-sm font-medium" to="/category/Perro">Perros</Link>
