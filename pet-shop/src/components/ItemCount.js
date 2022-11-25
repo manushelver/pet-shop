@@ -1,16 +1,23 @@
-import React from 'react';
-
-const ItemCount = ({count, handleCount}) => {
+export const ItemCount = ({ count, handleCount }) => {
   return (
     <div>
-      <div className='contador'>
-        <button onClick={handleCount("-")}> - </button>
-        <span>{count} </span>
-        <button onClick={handleCount("+")}> + </button>
-      </div>
+      <button
+        onClick={() => handleCount("minus")}
+        className="btn btn-primary"
+      >
+        -
+      </button>
+      <span
+        className="fs-4 fw-bolder text-justify"
+      >
+        {count}
+      </span>
+      <button
+        onClick={() => handleCount("plus")}
+        className="btn btn-primary"
+      >
+        +
+      </button>
     </div>
   );
-}
-
-
-export default ItemCount;
+};

@@ -22,7 +22,7 @@ function ItemDetailContainer() {
       }
     return (
         <div className="container d-flex justify-content-center h-auto">
-            <ItemDetail product = {item}/>
+            <ItemDetail item = {item}/>
         </div>
     )
 
