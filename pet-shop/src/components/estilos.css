@@ -2,7 +2,8 @@
     color: black;
     height: 30px;
     width: 30px;
-    margin-right: 2%;
+    margin-right: 50px;
+    
 }
 
 .App {
@@ -13,3 +14,24 @@
   }
 
 
+.itemsDelCarrito {
+    color:black;
+    height: 10px;
+    width: 10px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    background-color: red;
+}
+
+.brandName {
+    color: blue;
+    height: max-content;
+    width: max-content;
+    text-decoration: none;
+}
+
+.categorias {
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+}

@@ -1,5 +1,4 @@
 import ItemList from './ItemList';
-import { productos } from "../mocks/mocks.js";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore'
@@ -7,16 +6,10 @@ import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'fi
 function ItemListContainer() {
   const [products, setProducts] = useState([])
   const { category } = useParams();
-  useEffect(() => {
+  /*useEffect(() => {
     const db = getFirestore();
-    //Para consultar 1 solo producto
-    /* const itemRef = doc(db,'items','Ua8J5r2JgzZpwndvZi4O');
-    getDoc(itemRef).then((snapshot)=> {
-      if (snapshot.exists()) {
-        setProducts([{id:"Ua8J5r2JgzZpwndvZi4O",...snapshot.data()}]) //el objeto que estabamos consultando
-      } 
-    })*/
     const itemsCollection = collection(db, 'items');
+
     function querySinFiltro() {
       getDocs(itemsCollection).then((snapshot) => {
         const products = snapshot.docs.map((doc) => ({
@@ -41,7 +34,37 @@ function ItemListContainer() {
 
     category ? queryConFiltro() : querySinFiltro();
   }
-  )
+  )*/
+  useEffect(() => {
+    const dbFirestore = getFirestore()
+    // creamos una función que va a obtener los datos de firebase
+    const getData = async () => {
+      // con una condicional, si no tiene categorías, 
+      const queryRef = !category
+        // va a traer todos los productos
+        ? collection(dbFirestore, "items")
+        // si tiene categorías, firebase va a filtrarlas
+        : query(
+          collection(dbFirestore, "items"),
+          where("category", "==", category)
+        );
+      // recibimos los datos
+      const response = await getDocs(queryRef);
+      // y hacemos un map para crear objetos con esos datos.
+      const productos = response.docs.map((doc) => {
+        const newProduct = {
+          ...doc.data(),
+          id: doc.id,
+        };
+        // lo retornamos
+        return newProduct;
+      });
+        setProducts(productos);
+    };
+    // llamo a la función
+    getData();
+
+  }, [category])
 
   if (!products) {
     return <p>Loading...</p>;

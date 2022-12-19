@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import ItemDetail from "./ItemDetail"
 import { useParams } from "react-router-dom";
-import { getFirestore,doc,getDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 
 function ItemDetailContainer() {
@@ -14,10 +14,12 @@ function ItemDetailContainer() {
         const itemRef = doc(db, 'items', id);
         getDoc(itemRef).then((snapshot) => {
             if (snapshot.exists()) {
-                setItem([{ id, ...snapshot.data() }]) //el objeto que estabamos consultando
+                setItem({ id: snapshot.id, ...snapshot.data() }) //el objeto que estabamos consultando
             }
         })
-    });
+        .catch((error) => console.error(error))
+    },[id]);
+
     if (!item) {
         return <p>Loading...</p>;
     }
