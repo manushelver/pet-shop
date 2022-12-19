@@ -5,6 +5,7 @@ import { cartContext } from "../context/CartContext"
 export const Cart = () => {
     const { carrito, removeItem, clear } = useContext(cartContext);
     return (
+        //<h1>Test carrito</h1>
         <div>
             <div className="row">
                 {carrito.map((product) => (

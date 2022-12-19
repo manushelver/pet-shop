@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { cartContext } from "../context/CartContext";
 import { ItemCount } from "./ItemCount";
 
 const ItemDetail = ({ item }) => {
@@ -7,6 +8,7 @@ const ItemDetail = ({ item }) => {
   const [count, setCount] = useState(1);
   const [currentStock, setCurrentStock] = useState(item.stock);
   const maxQuantity = currentStock;
+  const {addItem,isInCart} = useContext(cartContext)
 
   function handleCount(type) {
     if (type === "+" && count < maxQuantity) setCount(count + 1);
@@ -15,7 +17,10 @@ const ItemDetail = ({ item }) => {
 
   function handleAdd() {
     if (currentStock < count) alert("No hay suficiente stock de este producto");
-    else setCurrentStock(currentStock - count);
+    else {
+      setCurrentStock(currentStock - count);
+      addItem(item,count);
+    }
   }
 
   function handleCheckout() {

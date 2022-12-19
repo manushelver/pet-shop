@@ -15,14 +15,10 @@ export const CartView = () => {
 
 
       const onSubmit = (data) => {
-        let items = 0;
-        carrito.forEach((product) => {
-            items += product.quantity
-        })
         const order = {
             buyer: data,
-            items,
-            total,
+            items: itemsEnTotal(),
+            total: total(),
           };
           addDoc(ordersCollection, order)
           .catch((error)=> console.error(error));
