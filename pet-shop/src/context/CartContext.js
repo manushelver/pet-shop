@@ -1,8 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 
 export const cartContext = createContext([]);
-
 
 export const CartContextProvider = ({ children }) => {
     const [carrito, setCarrito] = useState([]);
@@ -20,7 +19,7 @@ export const CartContextProvider = ({ children }) => {
           )
         })
       } else {
-        setCarrito(carrito.push({item, quantity: cantidad}));
+        setCarrito(carrito.push({...item, quantity: cantidad}));
       }
     }
   

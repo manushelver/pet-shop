@@ -5,7 +5,6 @@ import { cartContext } from "../context/CartContext"
 export const Cart = () => {
     const { carrito, removeItem, clear } = useContext(cartContext);
     return (
-        //<h1>Test carrito</h1>
         <div>
             <div className="row">
                 {carrito.map((product) => (
@@ -14,7 +13,7 @@ export const Cart = () => {
                             <img src={product.img} className="rounded mx-auto d-block" alt="Producto" />
                             <div className="card-body">
                                 <Link to={`/item/${product.id}`} className="card-title">{product.name}</Link>
-                                <button onClick={removeItem(product.id)}>X</button>
+                                <button onClick={()=>removeItem(product.id)}>X</button>
                             </div>
                         </div>
                     </div>
