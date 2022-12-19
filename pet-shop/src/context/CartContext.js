@@ -8,19 +8,20 @@ export const CartContextProvider = ({ children }) => {
   
     function addItem(item, cantidad) {
       const isAlreadyAdded = isInCart(item.id)
+      let carritoAnterior = carrito;
       if (isAlreadyAdded){
-        setCarrito((productos) => {
-          productos.map((producto) => 
-            producto.id === item.id ? {
-              ...producto, quantity: producto.quantity + cantidad
-            } : {
-              producto
-            }
-          )
+        carritoAnterior.map((producto)=>{
+          let cantidadFinal = producto.quantity + cantidad;
+          return producto.id === item.id && cantidadFinal <= producto.stock ? {
+            ...producto,quantity: cantidadFinal
+          }
+          :
+          producto
         })
       } else {
-        setCarrito(carrito.push({...item, quantity: cantidad}));
+        carritoAnterior.push({...item, quantity: cantidad});
       }
+      setCarrito(carritoAnterior);
     }
   
     function removeItem(itemId) {
@@ -37,7 +38,7 @@ export const CartContextProvider = ({ children }) => {
 
     function total(){
       let res = 0;
-      carrito.forEach((product)=> res += product.price)
+      carrito.forEach((product)=> res += product.price * product.quantity)
       return res;
     }
 

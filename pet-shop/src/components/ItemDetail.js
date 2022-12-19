@@ -8,7 +8,7 @@ const ItemDetail = ({ item }) => {
   const [count, setCount] = useState(1);
   const [currentStock, setCurrentStock] = useState(item.stock);
   const maxQuantity = currentStock;
-  const {addItem,isInCart} = useContext(cartContext)
+  const {addItem} = useContext(cartContext)
 
   function handleCount(type) {
     if (type === "+" && count < maxQuantity) setCount(count + 1);

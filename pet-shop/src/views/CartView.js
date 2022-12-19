@@ -41,9 +41,9 @@ export const CartView = () => {
     return (
         <Layout>
             {itemsEnTotal === 0 ? (
-                <>
+                <div>
                 <h1>Aun no agregaste productos, podes verlos</h1> <Link to="/">ACÁ</Link>
-                </>
+                </div>
             )
                 :
             (
@@ -73,7 +73,7 @@ export const CartView = () => {
                 </label>
                 <input type="submit" value="Submit" />
             </form>
-            <span>Total a pagar: ${total}</span>
+            <span>Total a pagar: ${total()}</span>
         </div>
         </Layout>
     )
