@@ -11,7 +11,7 @@ export const CartContextProvider = ({ children }) => {
       console.log(item.id);
       let carritoAnterior = carrito;
       if (isAlreadyAdded){
-        carritoAnterior.map((producto)=>{
+        let carritoActualizado = carritoAnterior.map((producto)=>{
           let cantidadFinal = producto.quantity + cantidad;
           if (producto.id === item.id && cantidadFinal <= producto.stock){
             return {...producto, quantity: cantidadFinal}
@@ -28,10 +28,11 @@ export const CartContextProvider = ({ children }) => {
           :
           producto */
         })
+        setCarrito(carritoActualizado)
       } else {
         carritoAnterior.push({...item, quantity: cantidad});
+        setCarrito(carritoAnterior);
       }
-      setCarrito(carritoAnterior);
     }
   
     function removeItem(itemId) {

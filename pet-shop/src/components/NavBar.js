@@ -7,7 +7,7 @@ import './estilos.css'
 
 export default function NavbarBootstrap() {
   return (
-      <Navbar bg="info" variant="light">
+      <Navbar bg="info" variant="light" className='me-auto'>
         <Container>
           <Navbar.Brand><Link to="/" className='brandName'>Mascoterias</Link></Navbar.Brand>
           <Nav className="me-auto">

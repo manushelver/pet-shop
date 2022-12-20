@@ -16,11 +16,12 @@
 
 .itemsDelCarrito {
     color:black;
-    height: 10px;
-    width: 10px;
-    margin-right: 30px;
-    margin-bottom: 20px;
-    background-color: red;
+    height: 1.5rem;
+    width: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 1.5rem;
 }
 
 .brandName {
@@ -34,4 +35,13 @@
     text-decoration: none;
     color: black;
     margin-left: 20px;
+}
+
+.imgItem {
+    height: 200px;
+    width: 300px;
+}
+
+.productoEnCarrito {
+    text-decoration: none;
 }
