@@ -8,15 +8,25 @@ export const CartContextProvider = ({ children }) => {
   
     function addItem(item, cantidad) {
       const isAlreadyAdded = isInCart(item.id)
+      console.log(item.id);
       let carritoAnterior = carrito;
       if (isAlreadyAdded){
         carritoAnterior.map((producto)=>{
           let cantidadFinal = producto.quantity + cantidad;
-          return producto.id === item.id && cantidadFinal <= producto.stock ? {
+          if (producto.id === item.id && cantidadFinal <= producto.stock){
+            return {...producto, quantity: cantidadFinal}
+          } if ( cantidadFinal > producto.stock){
+            alert ("No hay suficiente stock");
+            return producto
+          }
+          else {
+            return producto
+          }
+/*           return producto.id === item.id && cantidadFinal <= producto.stock ? {
             ...producto,quantity: cantidadFinal
           }
           :
-          producto
+          producto */
         })
       } else {
         carritoAnterior.push({...item, quantity: cantidad});

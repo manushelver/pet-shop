@@ -5,10 +5,15 @@ import { ItemCount } from "./ItemCount";
 
 const ItemDetail = ({ item }) => {
   const navigate = useNavigate();
+  const {addItem, isInCart, carrito} = useContext(cartContext)
   const [count, setCount] = useState(1);
-  const [currentStock, setCurrentStock] = useState(item.stock);
+  let stockActualizado = item.stock
+  if (isInCart(item.id)){
+    let itemInCart = carrito.find((producto) => producto.id === item.id)
+    stockActualizado = item.stock - itemInCart.quantity;
+  }
+  const [currentStock, setCurrentStock] = useState(stockActualizado);
   const maxQuantity = currentStock;
-  const {addItem} = useContext(cartContext)
 
   function handleCount(type) {
     if (type === "+" && count < maxQuantity) setCount(count + 1);
